@@ -66,8 +66,9 @@ padding: 10px 10px;
   display: flex;
   justify-content: space-between; 
   align-items: center;
-  padding: 10px 40px;
   background-color: #283e4d;
+  position: sticky;
+  top: 0;
 }
 
 .header-left {
@@ -124,27 +125,80 @@ header h1.name {
 
 .section-header {
   display: flex;
-  justify-content: center;
-  background-color: #814949; 
-  padding: 20px 20px;
-  position: sticky;
-  top: 0;
+  background-color:#814949; 
+  z-index: 10;
+  position: relative;
+  padding: 5px;
+  width: 100%;
 }
 
-.nav-right {
+.menu-container {
+  position: relative;
+  width: 100vw;
   display: flex;
-  gap: 150px; 
-  flex-wrap: wrap; 
+  justify-content: flex-end;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-button {
+    background-color: rgb(161, 171, 224);
+    color: black;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    border-radius: 30px;
+    box-shadow: #013b1e 2px 2px 4px;
+    border: 1px solid transparent;
+    cursor:pointer;
+    margin-right: 35px;
+}
+
+.menu-button:hover { 
+  background-color: #814949;
+  color: #fff;
+}
+
+
+.nav-right {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  background-color: #814949;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  justify-content: space-evenly;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  padding: 5px;
+  z-index: 9;
+}
+
+.menu-container:hover .nav-right {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .nav-right .nav-link {
   text-decoration: none;
   color: #eb770b;
-  font-family: "LibreFranklin";
+  font-family: "LibreFranklin", sans-serif;
   font-weight: 400;
-  padding: 5px 5px;
+  padding: 10px 10px;
+  flex: 1;
+}
+
+.nav-right .nav-link:hover { 
+  background-color: #9d5b5b;
+  color: #fff;
+}
+
+.burger-btn{
+    display: none;
 }
 
 .hero-shot{
@@ -156,7 +210,6 @@ header h1.name {
 
 .hero-shot-item{
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 50%;
 }
@@ -165,32 +218,36 @@ header h1.name {
     width: auto;
 }
 
-.hero-shot-text p{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-    justify-content: center;
-    font-family: Dosis;
-    font-weight: 400;
-    font-size: 28px;
-    color: #eb770b;
+.hero-shot-text{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+.hero-shot-text p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;
+    font-family: "Dosis";
+    font-weight: 400;
+    font-size: 28px;
+    color: #eb770b;
+   
+}
+
 .secondary-button{
     background-color: rgb(161, 171, 224);
     color: black;
     padding: 10px 10px;
-    margin-top: 10px;
+    margin-top: 50px;
     text-transform: uppercase;
     border-radius: 30px;
     box-shadow: #d15401 2px 2px 4px;
     cursor: pointer;
 }
 
-.secondary-button hover{
+.secondary-button:hover{
     background-color: #d15401;
 }
 .specialist-areas span{
@@ -250,9 +307,110 @@ margin-bottom: 30px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content:baseline;
+    justify-content:center;
     font-family: "LibreFranklin";
     font-weight: 400;
     font-size: 15px;
     margin: 30px 0px 10px 30px;
+}
+
+@media (max-width: 768px) {
+
+ nav{
+        position: fixed;
+        flex-direction: column;
+        width: 70vw;
+        height: 100dvh;
+        background-color: #283e4d;
+        right: 0;
+        top: 0;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform .5s ease-in-out;
+ }
+
+ .nav-open{
+    transform: translateX(0);
+    transition: transform .5s ease-in-out;
+ }
+ .burger-btn{
+    display: block;
+    background-color :#814949
+   }
+
+  .main-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .header-left {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  header h1.name {
+    font-size: 24px;
+  }
+
+  .primary-btn {
+    margin: 10px 0;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .hero-shot {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .hero-shot-item {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-shot-item img {
+    width: 90%;
+    height: auto;
+  }
+
+  .hero-shot-text p {
+    font-size: 20px;
+  }
+
+  .secondary-button {
+    margin-top: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .specialist-areas span {
+    font-size: 22px;
+    padding: 5px;
+  }
+
+  .marketing-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .banner-track {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .banner-item img {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .banner-item span {
+    font-size: 22px;
+    margin: 10px;
+  }
 }
