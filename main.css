@@ -68,8 +68,6 @@ padding: 10px 10px;
   justify-content: space-between; 
   align-items: center;
   background-color: #283e4d;
-  position: sticky;
-  top: 0;
 }
 
 .header-left {
@@ -423,7 +421,7 @@ margin-bottom: 30px;
   display: flex;
   color:black;
   font-family: "Dosis";
-  font-weight: 300;
+  font-weight: 700;
   font-size: 18px;
   padding-left: 20px;
   align-items: center;
